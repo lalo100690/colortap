@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+</head>
+    
+<body>
+    <div class="pantalla-inicio">
+        <h1>GAME<b>OVER</b></h1>
+        <p id="msj"></p>
+        <p>TUS PUNTOS: <b id="puntos"></b></p>
+        <p>TU NIVEL: <b id="nivel"></b></p>
+        <button onclick="navegar('juego.html')">
+                OTRA VEZ
+        </button>
+    </div>
+</body>
+    
+<script>
+    function navegar(liga){
+        //REDIRIGIR A LIGA (juego.html)
+        window.location.assign(liga);
+    }
+    
+    window.addEventListener('load', resultados, true);
+    
+    function resultados(){
+        //OBTENER LOS RESULTADOS GUARDADOS
+        puntos = localStorage.getItem('puntos')
+        nivel = localStorage.getItem('nivel')
+        
+        //IMPRIMIR NIVEL Y PUNTOS
+        document.getElementById('puntos').innerHTML = puntos;
+        document.getElementById('nivel').innerHTML = nivel;
+        
+        //IMPRIMIR UN MENSAJE
+        msj = document.getElementById('msj');
+        if(puntos<50){
+            msj.innerHTML = "¿En serio? necesitas practicar más..."
+        }
+        if(puntos>50 && puntos<100){
+            msj.innerHTML = "Bueno, no esperaba tanto de tí."
+        }
+        if(puntos>100 && puntos<200){
+            msj.innerHTML = "Casi me siento orgulloso... pero no."
+        }
+        if(puntos>200 && puntos<300){
+            msj.innerHTML = "De verdad, necesitas encontrar algo mejor que hacer..."
+        }
+    }
+</script>
+</html>
